@@ -12,17 +12,41 @@ void intro{
 
 void add_list() {
 	fstream myfile;
+	fopen("anime_index.txt");
 	if (!myfile) {
 		cout << "No index detected. Currently making index.\n";9
 	}
-	fopen("anime_index.txt");
 	else {
 		string entry;
 		cout << "Please put in an anime entry into the list:\n";
 		cin >> entry;
+		while (getline("anime_index.txt", entry)) {
+			if (entry.find(entry) != std::string::npos) {
+				cout >> "This entry already exists. Returning to menu."
+				fclose("anime_index.txt");
+				return;
+			}
+		}
 		cout >> "Adding Entry...\n";
 		myfile << entry;
 		cout >> "Entry Added.\n";
+	}
+}
+
+void search_list() {
+	fstream myfile;
+	string name;
+	fopen("anime_index.txt");
+	if (!myfile) {
+		cout << "No index detected. An index can be created through option 1
+		of this program.\n";
+		return;
+	}
+	else {
+		cout << "This is your list of anime as of the moment.\n";
+		while (getline(myfile, name)) {
+			cout << name << endl;
+		}
 	}
 }
 
@@ -33,6 +57,7 @@ int main() {
 	switch(choice_num) {
 		case 1:
 			add_list();
+			//organize_list();
 		case 2:
 			search_list();
 		case 3:
