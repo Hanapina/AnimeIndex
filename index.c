@@ -1,11 +1,13 @@
 #include <stdio.h>
-#include <string.h>
+#include <vector>
+#include <algorithm>
+#include <string>
 #include <iostream>
 #include <fstream>
 using namespace std;
 
 /* Just a function that prints out some intro statements */
-void intro{
+void intro(){
 	cout << "Welcome to my anime index. \n";
 	cout << "What do you want to do today? \n";
 	cout << "1. Add an anime.\n2. Display list.\n3. Exit.\n";
@@ -19,16 +21,17 @@ void add_list() {
 	myfile.open("anime_index.txt");
 	// Checking to make sure file exists.
 	if (!myfile) {
-		cout << "No index detected. Currently making index.\n";9
+		cout << "No index detected. Currently making index.\n";
 	}
 	else {
 		string entry;
+		string textHolder;
 		cout << "Please put in an anime entry into the list:\n";
 		cin >> entry;
 		// Check for existing line or not.
-		while (getline("anime_index.txt", entry)) {
-			if (entry.find(entry) != std::string::npos) {
-				cout >> "This entry already exists. Returning to menu."
+		while (getline("anime_index.txt", textHolder)) {
+			if (textHolder.find(entry) != std::string::npos) {
+				cout >> "This entry already exists. Returning to menu.";
 				myfile.close("anime_index.txt");
 				return;
 			}
@@ -53,7 +56,7 @@ void display_list() {
 	if (!myfile) {
 		cout << "No index detected. A file will be made for you.\n";
 		cout << "Because this is a blank file, I will be returning you to the menu.\n";
-		myfile.close("anime_index.txt");
+		myfile.close();
 		return;
 	}
 	// This prints the list out.
