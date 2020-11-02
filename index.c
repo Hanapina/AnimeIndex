@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string,h>
+#include <string.h>
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -52,8 +52,7 @@ void display_list() {
 	// File checking here.
 	if (!myfile) {
 		cout << "No index detected. A file will be made for you.\n";
-		cout << "Because this is a blank file, I will be returning you to the
-			menu.\n";
+		cout << "Because this is a blank file, I will be returning you to the menu.\n";
 		myfile.close("anime_index.txt");
 		return;
 	}
@@ -82,8 +81,7 @@ void organize_list() {
 		myfile.open("anime_index.txt");
 		if (!myfile) {
 			cout << "No index detected. A file will be made for you.\n";
-			cout << "Because this is a blank file, I will be returning you to the
-				menu.\n";
+			cout << "Because this is a blank file, I will be returning you to the menu.\n";
 			myfile.close("anime_index.txt");
 			return;
 		}
