@@ -29,17 +29,17 @@ void add_list() {
 		cout << "Please put in an anime entry into the list:\n";
 		cin >> entry;
 		// Check for existing line or not.
-		while (getline("anime_index.txt", textHolder)) {
+		while (getline(myfile, textHolder)) {
 			if (textHolder.find(entry) != std::string::npos) {
-				cout >> "This entry already exists. Returning to menu.";
+				cout << "This entry already exists. Returning to menu.";
 				myfile.close("anime_index.txt");
 				return;
 			}
 		}
 		// Adding entry if success.
-		cout >> "Adding Entry...\n";
+		cout << "Adding Entry...\n";
 		myfile << entry << endl;
-		cout >> "Entry Added.\n";
+		cout << "Entry Added.\n";
 	}
 	// Closing file
 	myfile.close();
@@ -79,13 +79,13 @@ void organize_list() {
 		fstream myfile;
 		fstream testfile;
 		string name;
-		vector name_vector;
+		vector<str> name_vector;
 		// Same file check > exit if file does not exist.
 		myfile.open("anime_index.txt");
 		if (!myfile) {
 			cout << "No index detected. A file will be made for you.\n";
 			cout << "Because this is a blank file, I will be returning you to the menu.\n";
-			myfile.close("anime_index.txt");
+			myfile.close();
 			return;
 		}
 		// Pushing into vector and then using sort to organize.
