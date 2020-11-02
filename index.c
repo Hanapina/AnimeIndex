@@ -83,6 +83,7 @@ void organize_list() {
 		// Same file check > exit if file does not exist.
 		myfile.open("anime_index.txt");
 		if (!myfile) {
+			myfile("anime_index.txt");
 			cout << "No index detected. A file will be made for you.\n";
 			cout << "Because this is a blank file, I will be returning you to the menu.\n";
 			myfile.close();
