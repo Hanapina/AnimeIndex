@@ -90,7 +90,7 @@ void organize_list() {
 		}
 		// Pushing into vector and then using sort to organize.
 		while (getline(myfile, name)) {
-			name_vector.pushback(name);
+			name_vector.push_back(name);
 		}
 		sort(name_vector.begin(), name_vector.end());
 		// Testfile created + written into it via from vector
