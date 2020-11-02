@@ -109,17 +109,22 @@ int main() {
 	// Switch statements for inputs.
   int choice_num;
   cin >> choice_num;
-	switch(choice_num) {
-		case 1:
-			// Maybe a more flexible way to add and organize at the same time?
-			add_list();
-			organize_list();
-		case 2:
-			display_list();
-		case 3:
-			cout << "Closing.";
-			EXIT_SUCCESS;
-		default:
-			cout << "Invalid input.\n";
+	bool token = true;
+	while (token) {
+		switch(choice_num) {
+			case 1:
+				// Maybe a more flexible way to add and organize at the same time?
+				add_list();
+				organize_list();
+				break;
+			case 2:
+				display_list();
+				break;
+			case 3:
+				token = false;
+				cout << "Exiting.\n";
+				break;
+			default:
+				cout << "Invalid input.\n";
 	}
 }
