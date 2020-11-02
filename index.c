@@ -32,7 +32,7 @@ void add_list() {
 		while (getline(myfile, textHolder)) {
 			if (textHolder.find(entry) != std::string::npos) {
 				cout << "This entry already exists. Returning to menu.";
-				myfile.close("anime_index.txt");
+				myfile.close();
 				return;
 			}
 		}
@@ -79,7 +79,7 @@ void organize_list() {
 		fstream myfile;
 		fstream testfile;
 		string name;
-		vector<str> name_vector;
+		vector<string> name_vector;
 		// Same file check > exit if file does not exist.
 		myfile.open("anime_index.txt");
 		if (!myfile) {
