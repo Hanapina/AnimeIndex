@@ -49,11 +49,12 @@ void add_list() {
 /* Function that displays the list of anime names
 	 added to the current created list. */
 void display_list() {
+	ifstream fileCheck("anime_index.txt");
 	fstream myfile;
 	string name;
-	myfile.open("anime_index.txt");
 	// File checking here.
-	if (!myfile) {
+	if (!fileCheck) {
+		myfile.open("anime_index.txt");
 		cout << "No index detected. A file will be made for you.\n";
 		cout << "Because this is a blank file, I will be returning you to the menu.\n";
 		myfile.close();
@@ -61,13 +62,14 @@ void display_list() {
 	}
 	// This prints the list out.
 	else {
+		myfile.open("anime_index.txt");
 		cout << "This is your list of anime as of the moment.\n";
 		while (getline(myfile, name)) {
 			cout << name << endl;
 		}
+		// Closing file.
+		myfile.close();
 	}
-	// Closing file.
-	myfile.close();
 	return;
 }
 
@@ -76,33 +78,34 @@ void display_list() {
 	 Using vectors to organize > write back to the file.
 	 Current write_back uses sep files to check for issues. */
 void organize_list() {
-		fstream myfile;
-		fstream testfile;
-		string name;
-		vector<string> name_vector;
-		// Same file check > exit if file does not exist.
+	fstream myfile;
+	fstream testfile;
+	ifstream fileCheck("anime_index.txt");
+	string name;
+	vector<string> name_vector;
+	// Same file check > exit if file does not exist.
+	if (!fileCheck) {
 		myfile.open("anime_index.txt");
-		if (!myfile) {
-			myfile("anime_index.txt");
-			cout << "No index detected. A file will be made for you.\n";
-			cout << "Because this is a blank file, I will be returning you to the menu.\n";
-			myfile.close();
-			return;
-		}
-		// Pushing into vector and then using sort to organize.
-		while (getline(myfile, name)) {
-			name_vector.push_back(name);
-		}
-		sort(name_vector.begin(), name_vector.end());
-		// Testfile created + written into it via from vector
-		testfile.open("test_file.txt");
-		for (size_t i = 0; i < name_vector.size(); i++) {
-			testfile << name_vector[i] << endl;
-		}
-		// Closing both files.
+		cout << "No index detected. A file will be made for you.\n";
+		cout << "Because this is a blank file, I will be returning you to the menu.\n";
 		myfile.close();
-		testfile.close();
 		return;
+	}
+	myfile.open("anime_index.txt");
+	// Pushing into vector and then using sort to organize.
+	while (getline(myfile, name)) {
+		name_vector.push_back(name);
+	}
+	sort(name_vector.begin(), name_vector.end());
+	// Testfile created + written into it via from vector
+	testfile.open("test_file.txt");
+	for (size_t i = 0; i < name_vector.size(); i++) {
+		testfile << name_vector[i] << endl;
+	}
+	// Closing both files.
+	myfile.close();
+	testfile.close();
+	return;
 }
 
 int main() {
