@@ -19,7 +19,6 @@ void intro(){
 	 Current write_back uses sep files to check for issues. */
 void organize_list() {
 	fstream myfile;
-	fstream testfile;
 	//ifstream fileCheck("anime_index.txt");
 	string name;
 	vector<string> name_vector;
@@ -40,13 +39,11 @@ void organize_list() {
 	}
 	sort(name_vector.begin(), name_vector.end());
 	// Testfile created + written into it via from vector
-	testfile.open("test_file.txt");
 	for (size_t i = 0; i < name_vector.size(); i++) {
-		testfile << name_vector[i] << endl;
+		myfile << name_vector[i] << endl;
 	}
 	// Closing both files.
 	myfile.close();
-	testfile.close();
 	return;
 }
 
