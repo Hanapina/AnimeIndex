@@ -111,10 +111,10 @@ void organize_list() {
 int main() {
 	intro();
 	// Switch statements for inputs.
-  int choice_num;
-  cin >> choice_num;
 	bool token = true;
 	while (token) {
+		int choice_num;
+	  cin >> choice_num;
 		switch(choice_num) {
 			case 1:
 				// Maybe a more flexible way to add and organize at the same time?
