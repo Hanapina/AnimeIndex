@@ -79,7 +79,7 @@ void add_list() {
 		}
 		// Adding entry if success.
 		cout << "Adding Entry...\n";
-		myfile << entry << endl;
+		myfile << entry;
 		cout << "Entry Added.\n";
 	}
 	myfile.close();
