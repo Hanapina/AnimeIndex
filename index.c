@@ -55,7 +55,7 @@ void organize_list() {
 	 does not have a dupe. */
 void add_list() {
 	ifstream fileCheck("anime_index.txt");
-	ofstream myfile;
+	fstream myfile;
 	// Checking to make sure file exists.
 	if (!fileCheck) {
 		ofstream fileOpen("anime_index.txt");
@@ -63,7 +63,7 @@ void add_list() {
 		fileCheck.close();
 		fileOpen.close();
 	}
-	myfile.open("anime_index.txt");
+	myfile.open("anime_index.txt", ios::out);
 	string entry;
 	string textHolder;
 	cout << "Please put in an anime entry into the list:\n";
