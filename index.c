@@ -58,12 +58,9 @@ void add_list() {
 	fstream myfile;
 	// Checking to make sure file exists.
 	if (!fileCheck) {
-		ofstream fileOpen("anime_index.txt");
 		cout << "No index detected. Currently making index.\n";
-		fileCheck.close();
-		fileOpen.close();
 	}
-	myfile.open("anime_index.txt", ios::out);
+	fstream fileOpen("anime_index.txt");
 	string entry;
 	string textHolder;
 	cout << "Please put in an anime entry into the list:\n";
