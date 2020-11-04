@@ -54,13 +54,17 @@ void organize_list() {
 	 Also deals with ensuring that the list itself
 	 does not have a dupe. */
 void add_list() {
+	ifstream fileCheck("anime_index.txt");
 	fstream myfile;
-	myfile.open("anime_index.txt");
 	// Checking to make sure file exists.
-	if (!myfile) {
+	if (!fileCheck) {
+		ofstream fileOpen("anime_index.txt");
 		cout << "No index detected. Currently making index.\n";
+		fileCheck.close();
+		fileOpen.close();
 	}
 	else {
+		myfile.open("anime_index.txt");
 		string entry;
 		string textHolder;
 		cout << "Please put in an anime entry into the list:\n";
@@ -95,6 +99,7 @@ void display_list() {
 		ofstream fileOpen("anime_index.txt");
 		cout << "No index detected. A file will be made for you.\n";
 		cout << "Because this is a blank file, I will be returning you to the menu.\n";
+		fileCheck.close();
 		fileOpen.close();
 		return;
 	}
