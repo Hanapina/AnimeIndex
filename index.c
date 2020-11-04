@@ -92,10 +92,10 @@ void display_list() {
 	string name;
 	// File checking here.
 	if (!fileCheck) {
-		myfile.open("anime_index.txt");
+		ofstream fileOpen("anime_index.txt");
 		cout << "No index detected. A file will be made for you.\n";
 		cout << "Because this is a blank file, I will be returning you to the menu.\n";
-		myfile.close();
+		fileOpen.close();
 		return;
 	}
 	// This prints the list out.
@@ -133,5 +133,6 @@ int main() {
 			default:
 				cout << "Invalid input.\n";
 			}
+		cout << "\n";
 	}
 }
