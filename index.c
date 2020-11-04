@@ -80,7 +80,7 @@ void add_list() {
 	while (!checkfile.eof()) {
 		getline(checkfile,textHolder);
 		cout << "Current text in file: " << textHolder;
-			if(strcmp(textholder, entry)) {
+			if(strcmp(textHolder, entry)) {
 				cout << "Entry already exists. Returning.\n";
 				return;
 			}
