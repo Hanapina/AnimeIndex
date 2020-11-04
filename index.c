@@ -63,7 +63,7 @@ void add_list() {
 		fileCheck.close();
 		fileOpen.close();
 	}
-	myfile.open("anime_index.txt");
+	myfile.open("anime_index.txt", std::fstream::app);
 	string entry;
 	string textHolder;
 	cout << "Please put in an anime entry into the list:\n";
