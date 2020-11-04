@@ -39,7 +39,7 @@ void organize_list() {
 	}
 	sort(name_vector.begin(), name_vector.end());
 	for (int j = 0; j < name_vector.size(); j++) {
-		cout << name_vector.at(i) << '\n';
+		cout << name_vector.at(j) << '\n';
 	}
 	// Testfile created + written into it via from vector
 	for (size_t i = 0; i < name_vector.size(); i++) {
@@ -137,6 +137,7 @@ int main() {
 				break;
 			default:
 				cout << "Invalid input.\n";
+				break;
 			}
 		cout << "\n";
 	}
