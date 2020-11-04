@@ -71,7 +71,6 @@ void add_list() {
 	getline(cin, entry);
 	cout << "Name: " << entry << '\n';
 	// Check for existing line or not.
-	/*
 	while (getline(myfile, textHolder)) {
 		if (textHolder.find(entry) != std::string::npos) {
 			cout << "This entry already exists. Returning to menu.";
@@ -79,11 +78,10 @@ void add_list() {
 			return;
 		}
 	}
-	*/
 
 	// Adding entry if success.
 	cout << "Adding Entry...\n";
-	myfile << entry;
+	myfile << entry << '\n';
 	cout << "Entry Added.\n";
 	myfile.close();
 	//organize_list();
