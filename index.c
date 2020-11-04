@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <cstring>
 using namespace std;
 
 /* Just a function that prints out some intro statements */
