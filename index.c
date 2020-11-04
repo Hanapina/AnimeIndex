@@ -78,7 +78,7 @@ void add_list() {
 	// Check for existing line or not.
 	checkfile.open("anime_index.txt", std::fstream::app);
 	while (!checkfile.eof()) {
-		getline(checkfile,textholder);
+		getline(checkfile,textHolder);
 		cout << "Current text in file: " << textHolder;
 			if(strcmp(textholder, entry)) {
 				cout << "Entry already exists. Returning.\n";
