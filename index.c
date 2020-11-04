@@ -58,15 +58,19 @@ void add_list() {
 	fstream myfile;
 	// Checking to make sure file exists.
 	if (!fileCheck) {
+		ofstream fileOpen("anime_index.txt");
 		cout << "No index detected. Currently making index.\n";
+		fileCheck.close();
+		fileOpen.close();
 	}
-	fstream fileOpen("anime_index.txt");
+	myfile.open("anime_index.txt");
 	string entry;
 	string textHolder;
-	cout << "Please put in an anime entry into the list:\n";
 	cin >> entry;
+	cout << "Please put in an anime entry into the list:\n";
 	cout << "Name: " << entry << '\n';
 	// Check for existing line or not.
+	/*
 	while (getline(myfile, textHolder)) {
 		if (textHolder.find(entry) != std::string::npos) {
 			cout << "This entry already exists. Returning to menu.";
@@ -74,9 +78,11 @@ void add_list() {
 			return;
 		}
 	}
+	*/
+
 	// Adding entry if success.
 	cout << "Adding Entry...\n";
-	myfile << "Anohana\n";
+	myfile << entry;
 	cout << "Entry Added.\n";
 	myfile.close();
 	//organize_list();
