@@ -38,9 +38,12 @@ void organize_list() {
 		name_vector.push_back(name);
 	}
 	sort(name_vector.begin(), name_vector.end());
+	for (int j = 0; j < name_vector.size(); j++) {
+		cout << name_vector.at(i) << '\n';
+	}
 	// Testfile created + written into it via from vector
 	for (size_t i = 0; i < name_vector.size(); i++) {
-		myfile << name_vector[i] << endl;
+		myfile << name_vector[i] << '\n';
 	}
 	// Closing both files.
 	myfile.close();
@@ -79,9 +82,9 @@ void add_list() {
 		myfile << entry << endl;
 		cout << "Entry Added.\n";
 	}
+	myfile.close();
 	organize_list();
 	// Closing file
-	myfile.close();
 	return;
 }
 
