@@ -67,7 +67,7 @@ void add_list() {
 	string entry;
 	string textHolder;
 	cout << "Please put in an anime entry into the list:\n";
-	getline(std::cin, entry);
+	cin.getline(entry);
 	// Check for existing line or not.
 	while (getline(myfile, textHolder)) {
 		if (textHolder.find(entry) != std::string::npos) {
