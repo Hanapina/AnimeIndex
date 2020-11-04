@@ -41,6 +41,7 @@ void add_list() {
 		myfile << entry << endl;
 		cout << "Entry Added.\n";
 	}
+	organize_list();
 	// Closing file
 	myfile.close();
 	return;
@@ -80,10 +81,11 @@ void display_list() {
 void organize_list() {
 	fstream myfile;
 	fstream testfile;
-	ifstream fileCheck("anime_index.txt");
+	//ifstream fileCheck("anime_index.txt");
 	string name;
 	vector<string> name_vector;
 	// Same file check > exit if file does not exist.
+	/*
 	if (!fileCheck) {
 		myfile.open("anime_index.txt");
 		cout << "No index detected. A file will be made for you.\n";
@@ -91,6 +93,7 @@ void organize_list() {
 		myfile.close();
 		return;
 	}
+	*/
 	myfile.open("anime_index.txt");
 	// Pushing into vector and then using sort to organize.
 	while (getline(myfile, name)) {
@@ -109,17 +112,16 @@ void organize_list() {
 }
 
 int main() {
-	intro();
 	// Switch statements for inputs.
 	bool token = true;
 	while (token) {
+		intro();
 		int choice_num;
 	  cin >> choice_num;
 		switch(choice_num) {
 			case 1:
 				// Maybe a more flexible way to add and organize at the same time?
 				add_list();
-				organize_list();
 				break;
 			case 2:
 				display_list();
