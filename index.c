@@ -13,6 +13,43 @@ void intro(){
 	cout << "1. Add an anime.\n2. Display list.\n3. Exit.\n";
 }
 
+/* Function used to organize list of anime.
+	 PROB THE ONE THAT WILL CREATE THE MOST PROBLEMS ATM.
+	 Using vectors to organize > write back to the file.
+	 Current write_back uses sep files to check for issues. */
+void organize_list() {
+	fstream myfile;
+	fstream testfile;
+	//ifstream fileCheck("anime_index.txt");
+	string name;
+	vector<string> name_vector;
+	// Same file check > exit if file does not exist.
+	/*
+	if (!fileCheck) {
+		myfile.open("anime_index.txt");
+		cout << "No index detected. A file will be made for you.\n";
+		cout << "Because this is a blank file, I will be returning you to the menu.\n";
+		myfile.close();
+		return;
+	}
+	*/
+	myfile.open("anime_index.txt");
+	// Pushing into vector and then using sort to organize.
+	while (getline(myfile, name)) {
+		name_vector.push_back(name);
+	}
+	sort(name_vector.begin(), name_vector.end());
+	// Testfile created + written into it via from vector
+	testfile.open("test_file.txt");
+	for (size_t i = 0; i < name_vector.size(); i++) {
+		testfile << name_vector[i] << endl;
+	}
+	// Closing both files.
+	myfile.close();
+	testfile.close();
+	return;
+}
+
 /* Function that deals with adding to the list.
 	 Also deals with ensuring that the list itself
 	 does not have a dupe. */
@@ -71,43 +108,6 @@ void display_list() {
 		// Closing file.
 		myfile.close();
 	}
-	return;
-}
-
-/* Function used to organize list of anime.
-	 PROB THE ONE THAT WILL CREATE THE MOST PROBLEMS ATM.
-	 Using vectors to organize > write back to the file.
-	 Current write_back uses sep files to check for issues. */
-void organize_list() {
-	fstream myfile;
-	fstream testfile;
-	//ifstream fileCheck("anime_index.txt");
-	string name;
-	vector<string> name_vector;
-	// Same file check > exit if file does not exist.
-	/*
-	if (!fileCheck) {
-		myfile.open("anime_index.txt");
-		cout << "No index detected. A file will be made for you.\n";
-		cout << "Because this is a blank file, I will be returning you to the menu.\n";
-		myfile.close();
-		return;
-	}
-	*/
-	myfile.open("anime_index.txt");
-	// Pushing into vector and then using sort to organize.
-	while (getline(myfile, name)) {
-		name_vector.push_back(name);
-	}
-	sort(name_vector.begin(), name_vector.end());
-	// Testfile created + written into it via from vector
-	testfile.open("test_file.txt");
-	for (size_t i = 0; i < name_vector.size(); i++) {
-		testfile << name_vector[i] << endl;
-	}
-	// Closing both files.
-	myfile.close();
-	testfile.close();
 	return;
 }
 
