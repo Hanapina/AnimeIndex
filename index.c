@@ -66,8 +66,8 @@ void add_list() {
 	myfile.open("anime_index.txt");
 	string entry;
 	string textHolder;
-	cin >> entry;
 	cout << "Please put in an anime entry into the list:\n";
+	cin >> entry;
 	cout << "Name: " << entry << '\n';
 	// Check for existing line or not.
 	/*
