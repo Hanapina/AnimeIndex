@@ -48,7 +48,6 @@ void organize_list() {
 	}
 	// Closing both files.
 	myfile.close();
-	return;
 }
 
 /* Function that deals with adding to the list.
@@ -96,7 +95,6 @@ void add_list() {
 	checkfile.close();
 	organize_list();
 	// Closing file
-	return;
 }
 
 /* Function that displays the list of anime names
@@ -124,7 +122,6 @@ void display_list() {
 		// Closing file.
 		myfile.close();
 	}
-	return;
 }
 
 int main() {
@@ -134,6 +131,9 @@ int main() {
 		intro();
 		int choice_num;
 	  cin >> choice_num;
+		while (cin.fail()) {
+			cout << "Input was not a number. Please enter only 1,2, or 3.\n";
+		}
 		switch(choice_num) {
 			case 1:
 				// Maybe a more flexible way to add and organize at the same time?
