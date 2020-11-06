@@ -19,21 +19,10 @@ void intro(){
 	 Using vectors to organize > write back to the file.
 	 Current write_back uses sep files to check for issues. */
 void organize_list() {
-	//ifstream fileCheck("anime_index.txt");
 	string name;
 	vector<string> name_vector;
-	// Same file check > exit if file does not exist.
-	/*
-	if (!fileCheck) {
-		myfile.open("anime_index.txt");
-		cout << "No index detected. A file will be made for you.\n";
-		cout << "Because this is a blank file, I will be returning you to the menu.\n";
-		myfile.close();
-		return;
-	}
-	*/
 
-	// Reading first and then making vector. 
+	// Reading first and then making vector.
 	ifstream myfile("anime_index.txt");
 	while (getline(myfile, name)) {
 		name_vector.push_back(name);
@@ -60,6 +49,7 @@ void add_list() {
 	ifstream fileCheck("anime_index.txt");
 	fstream myfile;
 	ifstream checkfile;
+
 	// Checking to make sure file exists.
 	if (!fileCheck) {
 		ofstream fileOpen("anime_index.txt");
@@ -75,14 +65,11 @@ void add_list() {
 	cout << "Please put in an anime entry into the list:\n";
 	cin.ignore();
 	getline(cin, entry);
-	//cout << "Name: " << entry << '\n';
-
 
 	// Check for existing line or not.
 	checkfile.open("anime_index.txt", std::fstream::app);
 	while (!checkfile.eof()) {
 		getline(checkfile,textHolder);
-		//cout << "Current text in file: " << textHolder;
 		if((textHolder == entry)) {
 			cout << "Entry already exists. Returning.\n";
 			return;
@@ -94,10 +81,11 @@ void add_list() {
 	myfile << entry;
 	myfile << '\n';
 	cout << "Entry Added.\n";
+
+	// Closes Files and then organizes.
 	myfile.close();
 	checkfile.close();
 	organize_list();
-	// Closing file
 }
 
 /* Function that displays the list of anime names
@@ -106,6 +94,7 @@ void display_list() {
 	ifstream fileCheck("anime_index.txt");
 	fstream myfile;
 	string name;
+
 	// File checking here.
 	if (!fileCheck) {
 		ofstream fileOpen("anime_index.txt");
@@ -115,14 +104,14 @@ void display_list() {
 		fileOpen.close();
 		return;
 	}
-	// This prints the list out.
+
+	// This prints the list out. File closes after.
 	else {
 		myfile.open("anime_index.txt");
 		cout << "This is your list of anime as of the moment.\n";
 		while (getline(myfile, name)) {
 			cout << name << endl;
 		}
-		// Closing file.
 		myfile.close();
 	}
 }
@@ -134,6 +123,8 @@ int main() {
 		intro();
 		int choice_num;
 	  cin >> choice_num;
+
+		// Small check to ensure that the inputs are digits vs anything else.
 		while (cin.fail()) {
 			cout << "Input was not a number. Please enter only 1,2, or 3.\n";
 			cout << "\n";
@@ -142,6 +133,7 @@ int main() {
 			intro();
 			cin >> choice_num;
 		}
+
 		switch(choice_num) {
 			case 1:
 				// Maybe a more flexible way to add and organize at the same time?
