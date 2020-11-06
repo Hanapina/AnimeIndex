@@ -66,6 +66,7 @@ void add_list() {
 		fileOpen.close();
 	}
 
+	// Asking for input
 	myfile.open("anime_index.txt", std::fstream::app);
 	string entry;
 	string textHolder;
@@ -79,7 +80,7 @@ void add_list() {
 	checkfile.open("anime_index.txt", std::fstream::app);
 	while (!checkfile.eof()) {
 		getline(checkfile,textHolder);
-		cout << "Current text in file: " << textHolder;
+		//cout << "Current text in file: " << textHolder;
 		if((textHolder == entry)) {
 			cout << "Entry already exists. Returning.\n";
 			return;
@@ -92,7 +93,8 @@ void add_list() {
 	myfile << '\n';
 	cout << "Entry Added.\n";
 	myfile.close();
-	//organize_list();
+	checkfile.close();
+	organize_list();
 	// Closing file
 	return;
 }
