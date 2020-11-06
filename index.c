@@ -135,6 +135,7 @@ int main() {
 	  cin >> choice_num;
 		while (cin.fail()) {
 			cout << "Input was not a number. Please enter only 1,2, or 3.\n";
+			cin >> choice_num;
 		}
 		switch(choice_num) {
 			case 1:
