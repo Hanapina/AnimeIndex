@@ -73,7 +73,7 @@ void add_list() {
 	cout << "Please put in an anime entry into the list:\n";
 	cin.ignore();
 	getline(cin, entry);
-	cout << "Name: " << entry << '\n';
+	//cout << "Name: " << entry << '\n';
 
 
 	// Check for existing line or not.
