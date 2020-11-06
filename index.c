@@ -19,7 +19,6 @@ void intro(){
 	 Using vectors to organize > write back to the file.
 	 Current write_back uses sep files to check for issues. */
 void organize_list() {
-	fstream myfile;
 	//ifstream fileCheck("anime_index.txt");
 	string name;
 	vector<string> name_vector;
@@ -33,8 +32,9 @@ void organize_list() {
 		return;
 	}
 	*/
-	myfile.open("anime_index.txt");
-	// Pushing into vector and then using sort to organize.
+
+	// Reading first and then making vector. 
+	ifstream myfile("anime_index.txt");
 	while (getline(myfile, name)) {
 		name_vector.push_back(name);
 	}
@@ -42,12 +42,15 @@ void organize_list() {
 	for (int j = 0; j < name_vector.size(); j++) {
 		cout << name_vector.at(j) << '\n';
 	}
-	// Writing into textfile via from vector
-	for (size_t i = 0; i < name_vector.size(); i++) {
-		myfile << name_vector[i] << '\n';
-	}
-	// Closing both files.
 	myfile.close();
+
+	// Writing into textfile via from vector and then closing file
+	ofstream writefile("anime_index.txt");
+	for (size_t i = 0; i < name_vector.size(); i++) {
+		writefile << name_vector[i];
+		writefile << '\n';
+	}
+	writefile.close();
 }
 
 /* Function that deals with adding to the list.
