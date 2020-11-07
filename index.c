@@ -123,7 +123,7 @@ void delete_entry() {
 	string name;
 	string userChoice;
 	vector<string> name_vector;
-	boolean token = false;
+	bool token = false;
 
 	// Reading first and then making vector: prep for deletion
 	ifstream myfile("anime_index.txt");
@@ -139,8 +139,7 @@ void delete_entry() {
 		cout << "What entry do you want to delete from your list?\n";
 		cin >> userChoice;
 		cin.ignore();
-		std::vector<int>::iterator position = find(name_vector.begin(), name_vector.end(), userChoice);
-		if (position != name_vector.end()) {
+		if (find(name_vector.begin(), name_vector.end(), userChoice) != name_vector.end()) {
 			token = true;
 			name_vector.erase(position);
 			ofstream writefile("anime_index.txt");
