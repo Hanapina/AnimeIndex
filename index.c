@@ -11,7 +11,7 @@ using namespace std;
 void intro(){
 	cout << "Welcome to my anime index. \n";
 	cout << "What do you want to do today? \n";
-	cout << "1. Add an anime.\n2. Display list.\n3. Exit.\n";
+	cout << "1. Add an anime.\n2. Display list.\n3. Delete Entry.\n4. Exit\n";
 }
 
 /* Function used to organize list of anime.
@@ -28,10 +28,13 @@ void organize_list() {
 		name_vector.push_back(name);
 	}
 	sort(name_vector.begin(), name_vector.end());
+
+	/*
 	for (int j = 0; j < name_vector.size(); j++) {
 		cout << name_vector.at(j) << '\n';
 	}
 	myfile.close();
+	*/
 
 	// Writing into textfile via from vector and then closing file
 	ofstream writefile("anime_index.txt");
@@ -116,6 +119,42 @@ void display_list() {
 	}
 }
 
+void delete_entry() {
+	string name;
+	string userChoice;
+	vector<string> name_vector;
+	boolean token = false;
+
+	// Reading first and then making vector: prep for deletion
+	ifstream myfile("anime_index.txt");
+	while (getline(myfile, name)) {
+		name_vector.push_back(name);
+	}
+	sort(name_vector.begin(), name_vector.end());
+	myfile.close();
+
+	// Grab the input
+	while (!token) {
+		display_list();
+		cout << "What entry do you want to delete from your list?\n";
+		cin >> userChoice;
+		cin.ignore();
+		std::vector<int>::iterator position = find(name_vector.begin(), name_vector.end(), userChoice);
+		if (position != name_vector.end()) {
+			token = true;
+			name_vector.erase(position);
+			ofstream writefile("anime_index.txt");
+			for (int i = 0; i < name_vector.size(); i++) {
+				writefile << name_vector.[i];
+				writefile << "\n";
+			}
+		}
+		else {
+			cout << "Your input does not exist in your index. Redisplaying list.\n";
+		}
+	}
+}
+
 int main() {
 	// Switch statements for inputs.
 	bool token = true;
@@ -143,6 +182,9 @@ int main() {
 				display_list();
 				break;
 			case 3:
+				delete_entry();
+				break;
+			case 4:
 				token = false;
 				cout << "Exiting.\n";
 				break;
