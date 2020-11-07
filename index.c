@@ -80,7 +80,7 @@ void add_list() {
 	}
 
 	// Adding entry if success.
-	cout << "Adding Entry...\n";
+	cout << "\nAdding Entry...\n";
 	myfile << entry;
 	myfile << '\n';
 	cout << "Entry Added.\n";
@@ -111,7 +111,7 @@ void display_list() {
 	// This prints the list out. File closes after.
 	else {
 		myfile.open("anime_index.txt");
-		cout << "This is your list of anime as of the moment.\n";
+		cout << "\nThis is your list of anime as of the moment.\n";
 		while (getline(myfile, name)) {
 			cout << name << endl;
 		}
@@ -119,6 +119,9 @@ void display_list() {
 	}
 }
 
+/* Delete function that mainly uses a vector to hold data.
+ 	 Takes in user input + deletes says input from vector.
+	 File is overwritten with new vector. */
 void delete_entry() {
 	string name;
 	string userChoice;
@@ -133,12 +136,16 @@ void delete_entry() {
 	sort(name_vector.begin(), name_vector.end());
 	myfile.close();
 
-	// Grab the input
+	// While loops that handles inputs + vector + writing of file. Uses Bool to hold
 	while (!token) {
+		// Input
 		display_list();
-		cout << "What entry do you want to delete from your list?\n";
+		cout << "\nWhat entry do you want to delete from your list?\n";
 		cin >> userChoice;
 		cin.ignore();
+
+		// If statement that handles checking if entry exists.
+		// Exists = Remove from Vector -> Write to file, else > Warns user.
 		auto position = find(name_vector.begin(), name_vector.end(), userChoice);
 		if (position != name_vector.end()) {
 			token = true;
@@ -151,6 +158,7 @@ void delete_entry() {
 		}
 		else {
 			cout << "Your input does not exist in your index. Redisplaying list.\n";
+			cout << "\n";
 		}
 	}
 }
@@ -165,7 +173,7 @@ int main() {
 
 		// Small check to ensure that the inputs are digits vs anything else.
 		while (cin.fail()) {
-			cout << "Input was not a number. Please enter only 1,2, or 3.\n";
+			cout << "Input was not a number. Please enter only 1, 2, 3, or 4.\n";
 			cout << "\n";
 			cin.clear();
 			cin.ignore();
