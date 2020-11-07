@@ -139,7 +139,8 @@ void delete_entry() {
 		cout << "What entry do you want to delete from your list?\n";
 		cin >> userChoice;
 		cin.ignore();
-		if (find(name_vector.begin(), name_vector.end(), userChoice) != name_vector.end()) {
+		auto position = find(name_vector.begin(), name_vector.end(), userChoice);
+		if (position != name_vector.end()) {
 			token = true;
 			name_vector.erase(position);
 			ofstream writefile("anime_index.txt");
