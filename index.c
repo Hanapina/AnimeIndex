@@ -145,7 +145,7 @@ void delete_entry() {
 			name_vector.erase(position);
 			ofstream writefile("anime_index.txt");
 			for (int i = 0; i < name_vector.size(); i++) {
-				writefile << name_vector.[i];
+				writefile << name_vector[i];
 				writefile << "\n";
 			}
 		}
