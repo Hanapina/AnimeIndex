@@ -146,8 +146,10 @@ void delete_entry() {
 
 		// If statement that handles checking if entry exists.
 		// Exists = Remove from Vector -> Write to file, else > Warns user.
+		// MAYBE WE CAN DO SOME CASE SENSE CHANGES LATER? 
 		auto position = find(name_vector.begin(), name_vector.end(), userChoice);
 		if (position != name_vector.end()) {
+			cout << "Deleting Entry.\n"
 			token = true;
 			name_vector.erase(position);
 			ofstream writefile("anime_index.txt");
@@ -155,6 +157,7 @@ void delete_entry() {
 				writefile << name_vector[i];
 				writefile << "\n";
 			}
+			cout << "Entry deleted.\n"
 		}
 		else {
 			cout << "Your input does not exist in your index. Redisplaying list.\n";
