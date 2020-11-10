@@ -183,11 +183,12 @@ int main() {
 			if (convert >> actual_num && !(convert >> choice_num)) {
 				inputCheck = true;
 			}
-			cout << "Input was not a number. Please enter only 1, 2, 3, or 4.\n";
-			cout << "\n";
-			cin.clear();
-
-			intro();
+			else {
+				cout << "Input was not a number. Please enter only 1, 2, 3, or 4.\n";
+				cout << "\n";
+				cin.clear();
+				intro();
+			}
 		}
 
 		switch(actual_num) {
