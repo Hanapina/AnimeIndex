@@ -186,6 +186,7 @@ int main() {
 			cout << "Input was not a number. Please enter only 1, 2, 3, or 4.\n";
 			cout << "\n";
 			cin.clear();
+
 			intro();
 		}
 
@@ -205,7 +206,7 @@ int main() {
 				cout << "Exiting.\n";
 				break;
 			default:
-				cout << "Invalid input.\n";
+				cout << "\nInvalid input. You entered a number that was not listed.\n";
 				break;
 			}
 		cout << "\n";
