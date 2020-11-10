@@ -171,12 +171,17 @@ int main() {
 	bool token = true;
 	while (token) {
 		intro();
-		int choice_num;
+		string choice_num;
+		int actual_num;
+		bool inputCheck = false;
 	  getline(cin, choice_num);
 		std::stringstream convert(choice_num);
 
 		// Small check to ensure that the inputs are digits vs anything else.
-		while (cin.fail() || !(convert >> choice_num))) {
+		while (!inputCheck) {
+			if (convert >> actual_num && !(convert >> choice_num)) {
+				inputCheck = true;
+			}
 			cout << "Input was not a number. Please enter only 1, 2, 3, or 4.\n";
 			cout << "\n";
 			cin.clear();
@@ -185,7 +190,7 @@ int main() {
 			std::stringstream convert(choice_num);
 		}
 
-		switch(choice_num) {
+		switch(actual_num) {
 			case 1:
 				// Maybe a more flexible way to add and organize at the same time?
 				add_list();
