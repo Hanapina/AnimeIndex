@@ -157,7 +157,7 @@ void delete_entry() {
 				writefile << name_vector[i];
 				writefile << "\n";
 			}
-			cout << "Entry deleted.\n"
+			cout << "Entry deleted.\n";
 		}
 		else {
 			cout << "Your input does not exist in your index. Redisplaying list.\n";
