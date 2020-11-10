@@ -149,7 +149,7 @@ void delete_entry() {
 		// MAYBE WE CAN DO SOME CASE SENSE CHANGES LATER?
 		auto position = find(name_vector.begin(), name_vector.end(), userChoice);
 		if (position != name_vector.end()) {
-			cout << "Deleting Entry.\n"
+			cout << "Deleting Entry.\n";
 			token = true;
 			name_vector.erase(position);
 			ofstream writefile("anime_index.txt");
