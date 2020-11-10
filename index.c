@@ -190,6 +190,8 @@ int main() {
 			}
 		}
 
+		// Switch statement that defines our integer inputs.
+		// NEXT TO DO. Add a actual index system w/ user input name as well. 
 		switch(actual_num) {
 			case 1:
 				// Maybe a more flexible way to add and organize at the same time?
