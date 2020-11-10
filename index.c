@@ -146,7 +146,7 @@ void delete_entry() {
 
 		// If statement that handles checking if entry exists.
 		// Exists = Remove from Vector -> Write to file, else > Warns user.
-		// MAYBE WE CAN DO SOME CASE SENSE CHANGES LATER? 
+		// MAYBE WE CAN DO SOME CASE SENSE CHANGES LATER?
 		auto position = find(name_vector.begin(), name_vector.end(), userChoice);
 		if (position != name_vector.end()) {
 			cout << "Deleting Entry.\n"
@@ -172,16 +172,17 @@ int main() {
 	while (token) {
 		intro();
 		int choice_num;
-	  cin >> choice_num;
+	  getline(cin, choice_num);
+		std::stringstream convert(choice_num);
 
 		// Small check to ensure that the inputs are digits vs anything else.
-		while (cin.fail()) {
+		while (cin.fail() || !(convert >> choice_num))) {
 			cout << "Input was not a number. Please enter only 1, 2, 3, or 4.\n";
 			cout << "\n";
 			cin.clear();
-			cin.ignore();
 			intro();
-			cin >> choice_num;
+			getline(cin, choice_num);
+			std::stringstream convert(choice_num);
 		}
 
 		switch(choice_num) {
