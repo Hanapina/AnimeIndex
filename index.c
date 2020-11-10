@@ -181,6 +181,8 @@ int main() {
 		// Small check to ensure that the inputs are digits vs anything else.
 		while (!inputCheck) {
 			if (convert >> actual_num && !(convert >> choice_num)) {
+				cout << "This is your current number: " << actual_num;
+				cout << "\n"; 
 				inputCheck = true;
 			}
 			cout << "Input was not a number. Please enter only 1, 2, 3, or 4.\n";
