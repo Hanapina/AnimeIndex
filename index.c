@@ -175,13 +175,11 @@ int main() {
 		string choice_num;
 		int actual_num;
 		bool inputCheck = false;
-	  getline(cin, choice_num);
-		std::stringstream convert(choice_num);
 
 		// Small check to ensure that the inputs are digits vs anything else.
 		while (!inputCheck) {
-			cout << "This is your current number: " << actual_num;
-			cout << "\n"; 
+			getline(cin, choice_num);
+			std::stringstream convert(choice_num);
 			if (convert >> actual_num && !(convert >> choice_num)) {
 				inputCheck = true;
 			}
@@ -189,8 +187,6 @@ int main() {
 			cout << "\n";
 			cin.clear();
 			intro();
-			getline(cin, choice_num);
-			std::stringstream convert(choice_num);
 		}
 
 		switch(actual_num) {
