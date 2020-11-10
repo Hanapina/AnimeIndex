@@ -67,7 +67,6 @@ void add_list() {
 	string entry;
 	string textHolder;
 	cout << "Please put in an anime entry into the list:\n";
-	cin.ignore();
 	getline(cin, entry);
 
 	// Check for existing line or not.
