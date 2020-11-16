@@ -169,7 +169,7 @@ void delete_entry(string fileName) {
 int main() {
 	// Switch statements for inputs.
 	bool token = true;
-	string fileName = "anime_index.txt"
+	string fileName = "anime_index.txt";
 	while (token) {
 		intro();
 		string choice_num;
