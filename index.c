@@ -10,9 +10,9 @@ using namespace std;
 
 /* Just a function that prints out some intro statements */
 void intro(){
-	cout << "Welcome to my anime index.\n";
+	cout << "Welcome to The Weeb Index.\n";
 	cout << "What do you want to do today? \n";
-	cout << "1. Add an anime.\n2. Display list.\n3. Delete Entry.\n4.Change fileName.\n5. Exit\n";
+	cout << "1. Add an entry.\n2. Display current file list.\n3. Delete Entry.\n4. Change fileName.\n5. Exit\n";
 }
 
 /* Function used to organize list of anime.
@@ -23,19 +23,12 @@ void organize_list(string fileName) {
 	string name;
 	vector<string> name_vector;
 
-	// Reading first and then making vector.
+	// Reading first and then making vector + sorting it afterwards.
 	ifstream myfile(fileName);
 	while (getline(myfile, name)) {
 		name_vector.push_back(name);
 	}
 	sort(name_vector.begin(), name_vector.end());
-
-	/*
-	for (int j = 0; j < name_vector.size(); j++) {
-		cout << name_vector.at(j) << '\n';
-	}
-	myfile.close();
-	*/
 
 	// Writing into textfile via from vector and then closing file
 	ofstream writefile(fileName);
@@ -166,16 +159,23 @@ void delete_entry(string fileName) {
 	}
 }
 
+/* This function takes in a fileName as its argument and
+	 essentially enforces a while loop that checks user input
+	 to see if they want to change to w/e file they want to. */
 string change_entry(string fileName) {
 	string userInput;
 	string userBool;
 	bool token = true;
+
+	// Getting Input
 	while (token) {
 		cout << "\nThe current file that you are working with is: " << fileName;
 		cout << '\n';
 	  cout << "Please enter the name of the entry you would like to change to.\n";
 		getline(cin, userInput);
 		cin.clear();
+
+		// Checking whether or not user wants this file name.
 		cout << "Input: " << userInput;
 		cout << "\nIs this correct? Type 'yes' to lockin change.\n";
 		getline(cin, userBool);
