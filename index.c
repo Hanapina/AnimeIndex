@@ -10,9 +10,9 @@ using namespace std;
 
 /* Just a function that prints out some intro statements */
 void intro(){
-	cout << "Welcome to my anime index. \n";
+	cout << "Welcome to my anime index.\n";
 	cout << "What do you want to do today? \n";
-	cout << "1. Add an anime.\n2. Display list.\n3. Delete Entry.\n4. Exit\n";
+	cout << "1. Add an anime.\n2. Display list.\n3. Delete Entry.\n4.Change fileName.\n5. Exit\n";
 }
 
 /* Function used to organize list of anime.
@@ -166,18 +166,45 @@ void delete_entry(string fileName) {
 	}
 }
 
+string change_entry(string fileName) {
+	string userInput;
+	string userBool;
+	bool token = true;
+	while (token) {
+		cout << "\nThe current file that you are working with is: " << fileName;
+		cout << '\n';
+	  cout << "Please enter the name of the entry you would like to change to.\n";
+		getline(cin, userInput);
+		cin.clear();
+		cout << "Input: " << userInput;
+		cout << "\nIs this correct? Type 'yes' to lockin change.\n";
+		getline(cin, userBool);
+		cin.clear();
+		if (userBool == "yes") {
+			token = false;
+		}
+		else {
+			cout << "Did not type yes, returning you to the beginning to file change.\n";
+		}
+	}
+	return userInput + ".txt";
+}
+
+
 int main() {
 	// Switch statements for inputs.
 	bool token = true;
 	string fileName = "anime_index.txt";
 	while (token) {
-		intro();
 		string choice_num;
 		int actual_num;
 		bool inputCheck = false;
 
 		// Small check to ensure that the inputs are digits vs anything else.
 		while (!inputCheck) {
+			intro();
+			cout << "Your current file that you are working with is: " << fileName;
+			cout << "\n";
 			getline(cin, choice_num);
 			std::stringstream convert(choice_num);
 			if (convert >> actual_num && !(convert >> choice_num)) {
@@ -187,7 +214,6 @@ int main() {
 				cout << "Input was not a number. Please enter only 1, 2, 3, or 4.\n";
 				cout << "\n";
 				cin.clear();
-				intro();
 			}
 		}
 
@@ -205,6 +231,9 @@ int main() {
 				delete_entry(fileName);
 				break;
 			case 4:
+				fileName = change_entry(fileName);
+				break;
+			case 5:
 				token = false;
 				cout << "Exiting.\n";
 				break;
