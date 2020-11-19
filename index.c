@@ -77,8 +77,8 @@ void add_list(string fileName) {
 
 	// Adding entry if success.
 	cout << "\nAdding Entry...\n";
-	myfile << entry;
-	myfile << '\n';
+	myFile << entry;
+	myFile << '\n';
 	cout << "Entry Added.\n";
 
 	// Closes Files and then organizes.
