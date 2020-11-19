@@ -8,7 +8,7 @@
 #include <sstream>
 #include <cstring>
 using namespace std;
-namespace fs = boost::filesystem
+namespace fs = boost::filesystem;
 
 /* Just a function that prints out some intro statements */
 void intro(){
