@@ -197,7 +197,7 @@ string change_entry(string fileName) {
  	 file extensions.
 	 Link: https://stackoverflow.com/questions/11140483/how-to-get-list-of-files-with-a-specific-extension-in-a-given-folder
 */
-vector<fs::path> display_directory_files(fs::path const & root, string const & ext)
+void display_directory_files(fs::path const & root, string const & ext)
 {
     vector<fs::path> paths;
     if (fs::exists(root) && fs::is_directory(root))
@@ -208,7 +208,10 @@ vector<fs::path> display_directory_files(fs::path const & root, string const & e
                 paths.emplace_back(entry.path().filename());
         }
     }
-    return paths;
+		cout << "These are all your text files in your current folder:\n";
+  	for (auto i = 0; i < paths.size(); i++) {
+			cout << paths[i] << endl;
+		}
 }
 
 int main() {
