@@ -19,9 +19,9 @@ void intro(){
 }
 
 /* Function used to organize list of anime.
-	 PROB THE ONE THAT WILL CREATE THE MOST PROBLEMS ATM.
-	 Using vectors to organize > write back to the file.
-	 Current write_back uses sep files to check for issues. */
+PROB THE ONE THAT WILL CREATE THE MOST PROBLEMS ATM.
+Using vectors to organize > write back to the file.
+Current write_back uses sep files to check for issues. */
 void organize_list(string fileName) {
 	string name;
 	vector<string> nameVector;
@@ -43,8 +43,8 @@ void organize_list(string fileName) {
 }
 
 /* Function that deals with adding to the list.
-	 Also deals with ensuring that the list itself
-	 does not have a dupe. */
+Also deals with ensuring that the list itself
+does not have a dupe. */
 void add_list(string fileName) {
 	ifstream fileCheck(fileName);
 	fstream myFile;
@@ -88,7 +88,7 @@ void add_list(string fileName) {
 }
 
 /* Function that displays the list of anime names
-	 added to the current created list. */
+added to the current created list. */
 void display_list(string fileName) {
 	ifstream fileCheck(fileName);
 	fstream myFile;
@@ -116,8 +116,8 @@ void display_list(string fileName) {
 }
 
 /* Delete function that mainly uses a vector to hold data.
- 	 Takes in user input + deletes says input from vector.
-	 File is overwritten with new vector. */
+Takes in user input + deletes says input from vector.
+File is overwritten with new vector. */
 void delete_entry(string fileName) {
 	string name;
 	string userChoice;
@@ -163,8 +163,8 @@ void delete_entry(string fileName) {
 }
 
 /* This function takes in a fileName as its argument and
-	 essentially enforces a while loop that checks user input
-	 to see if they want to change to w/e file they want to. */
+essentially enforces a while loop that checks user input
+to see if they want to change to w/e file they want to. */
 string change_entry(string fileName) {
 	string userInput;
 	string userBool;
@@ -174,7 +174,7 @@ string change_entry(string fileName) {
 	while (token) {
 		cout << "\nThe current file that you are working with is: " << fileName;
 		cout << '\n';
-	  cout << "Please enter the name of the entry you would like to change to.\n";
+		cout << "Please enter the name of the entry you would like to change to.\n";
 		getline(cin, userInput);
 		cin.clear();
 
@@ -194,21 +194,21 @@ string change_entry(string fileName) {
 }
 
 /* Function taken from stack overflow using the boost library to find certain
- 	 file extensions. Added a for loop at the end to print the statement out rather
-	 than just have it return a vector.
-	 Link: https://stackoverflow.com/questions/11140483/how-to-get-list-of-files-with-a-specific-extension-in-a-given-folder
+file extensions. Added a for loop at the end to print the statement out rather
+than just have it return a vector.
+Link: https://stackoverflow.com/questions/11140483/how-to-get-list-of-files-with-a-specific-extension-in-a-given-folder
 */
 void display_directory_files(fs::path const & root, string const & ext) {
 	// Uses certain boost functions to locate textfiles with certain extensions
-  vector<fs::path> fileVector;
-  if (fs::exists(root) && fs::is_directory(root))
-  {
-      for (auto const & entry : fs::recursive_directory_iterator(root))
-      {
-          if (fs::is_regular_file(entry) && entry.path().extension() == ext)
-              fileVector.emplace_back(entry.path().filename());
-      }
-  }
+	vector<fs::path> fileVector;
+	if (fs::exists(root) && fs::is_directory(root))
+	{
+		for (auto const & entry : fs::recursive_directory_iterator(root))
+		{
+			if (fs::is_regular_file(entry) && entry.path().extension() == ext)
+			fileVector.emplace_back(entry.path().filename());
+		}
+	}
 
 	// Prints out the vector that has been populated from above.
 	cout << "\nThese are all your text files in your current folder:\n";
@@ -249,29 +249,29 @@ int main() {
 		// NEXT TO DO. Add a actual index system w/ user input name as well.
 		switch(actual_num) {
 			case 1:
-				// Maybe a more flexible way to add and organize at the same time?
-				add_list(fileName);
-				break;
+			// Maybe a more flexible way to add and organize at the same time?
+			  add_list(fileName);
+			  break;
 			case 2:
-				display_list(fileName);
-				break;
+			  display_list(fileName);
+			  break;
 			case 3:
-				display_directory_files(cwdPath, ".txt");
-				break;
+			  display_directory_files(cwdPath, ".txt");
+			  break;
 			case 4:
-				delete_entry(fileName);
-				break;
+			  delete_entry(fileName);
+			  break;
 			case 5:
-				fileName = change_entry(fileName);
-				break;
+			  fileName = change_entry(fileName);
+			  break;
 			case 6:
-				token = false;
-				cout << "Exiting.\n";
-				break;
+			  token = false;
+			  cout << "Exiting.\n";
+			  break;
 			default:
-				cout << "\nInvalid input. You entered a number that was not listed.\n";
-				break;
-			}
+			  cout << "\nInvalid input. You entered a number that was not listed.\n";
+			  break;
+		}
 		cout << "\n";
 	}
 }
