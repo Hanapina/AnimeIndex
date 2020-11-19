@@ -1,7 +1,9 @@
 # AnimeIndex
 This is a small program used to help people generate a list (in the form of a text file) and keep it organized (as for now this was built to keep the animes I've watched organized and to see what I have or not watched yet). I would put more functions in here but for now this is a WIP. 
 
-If you want to actually create a build of the project yourself, you need to have following installed: 
+Next step is to implement a working GUI for this. 
+
+If you want to create a build of the project yourself, you need to have following installed: 
 
 * **Boost library (https://www.boost.org/)**
 * **C++17 and above.**
