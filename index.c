@@ -24,22 +24,22 @@ void intro(){
 	 Current write_back uses sep files to check for issues. */
 void organize_list(string fileName) {
 	string name;
-	vector<string> name_vector;
+	vector<string> nameVector;
 
 	// Reading first and then making vector + sorting it afterwards.
-	ifstream myfile(fileName);
-	while (getline(myfile, name)) {
-		name_vector.push_back(name);
+	ifstream myFile(fileName);
+	while (getline(myFile, name)) {
+		nameVector.push_back(name);
 	}
-	sort(name_vector.begin(), name_vector.end());
+	sort(nameVector.begin(), nameVector.end());
 
 	// Writing into textfile via from vector and then closing file
-	ofstream writefile(fileName);
-	for (size_t i = 0; i < name_vector.size(); i++) {
-		writefile << name_vector[i];
-		writefile << '\n';
+	ofstream writeFile(fileName);
+	for (size_t i = 0; i < nameVector.size(); i++) {
+		writeFile << nameVector[i];
+		writeFile << '\n';
 	}
-	writefile.close();
+	writeFile.close();
 }
 
 /* Function that deals with adding to the list.
@@ -47,8 +47,8 @@ void organize_list(string fileName) {
 	 does not have a dupe. */
 void add_list(string fileName) {
 	ifstream fileCheck(fileName);
-	fstream myfile;
-	ifstream checkfile;
+	fstream myFile;
+	ifstream checkFile;
 
 	// Checking to make sure file exists.
 	if (!fileCheck) {
@@ -59,16 +59,16 @@ void add_list(string fileName) {
 	}
 
 	// Asking for input
-	myfile.open(fileName, std::fstream::app);
+	myFile.open(fileName, std::fstream::app);
 	string entry;
 	string textHolder;
 	cout << "Please put in an anime entry into the list:\n";
 	getline(cin, entry);
 
 	// Check for existing line or not.
-	checkfile.open(fileName, std::fstream::app);
-	while (!checkfile.eof()) {
-		getline(checkfile,textHolder);
+	checkFile.open(fileName, std::fstream::app);
+	while (!checkFile.eof()) {
+		getline(checkFile,textHolder);
 		if((textHolder == entry)) {
 			cout << "Entry already exists. Returning.\n";
 			return;
@@ -82,8 +82,8 @@ void add_list(string fileName) {
 	cout << "Entry Added.\n";
 
 	// Closes Files and then organizes.
-	myfile.close();
-	checkfile.close();
+	myFile.close();
+	checkFile.close();
 	organize_list(fileName);
 }
 
@@ -91,7 +91,7 @@ void add_list(string fileName) {
 	 added to the current created list. */
 void display_list(string fileName) {
 	ifstream fileCheck(fileName);
-	fstream myfile;
+	fstream myFile;
 	string name;
 
 	// File checking here.
@@ -106,12 +106,12 @@ void display_list(string fileName) {
 
 	// This prints the list out. File closes after.
 	else {
-		myfile.open(fileName);
+		myFile.open(fileName);
 		cout << "\nThis is your list of anime as of the moment.\n";
-		while (getline(myfile, name)) {
+		while (getline(myFile, name)) {
 			cout << name << endl;
 		}
-		myfile.close();
+		myFile.close();
 	}
 }
 
@@ -121,16 +121,16 @@ void display_list(string fileName) {
 void delete_entry(string fileName) {
 	string name;
 	string userChoice;
-	vector<string> name_vector;
+	vector<string> nameVector;
 	bool token = false;
 
 	// Reading first and then making vector: prep for deletion
-	ifstream myfile(fileName);
-	while (getline(myfile, name)) {
-		name_vector.push_back(name);
+	ifstream myFile(fileName);
+	while (getline(myFile, name)) {
+		nameVector.push_back(name);
 	}
-	sort(name_vector.begin(), name_vector.end());
-	myfile.close();
+	sort(nameVector.begin(), nameVector.end());
+	myFile.close();
 
 	// While loops that handles inputs + vector + writing of file. Uses Bool to hold
 	while (!token) {
@@ -143,15 +143,15 @@ void delete_entry(string fileName) {
 		// If statement that handles checking if entry exists.
 		// Exists = Remove from Vector -> Write to file, else > Warns user.
 		// MAYBE WE CAN DO SOME CASE SENSE CHANGES LATER?
-		auto position = find(name_vector.begin(), name_vector.end(), userChoice);
-		if (position != name_vector.end()) {
+		auto position = find(nameVector.begin(), nameVector.end(), userChoice);
+		if (position != nameVector.end()) {
 			cout << "Deleting Entry.\n";
 			token = true;
-			name_vector.erase(position);
-			ofstream writefile(fileName);
-			for (int i = 0; i < name_vector.size(); i++) {
-				writefile << name_vector[i];
-				writefile << "\n";
+			nameVector.erase(position);
+			ofstream writeFile(fileName);
+			for (int i = 0; i < nameVector.size(); i++) {
+				writeFile << nameVector[i];
+				writeFile << "\n";
 			}
 			cout << "Entry deleted.\n";
 		}
@@ -194,24 +194,27 @@ string change_entry(string fileName) {
 }
 
 /* Function taken from stack overflow using the boost library to find certain
- 	 file extensions.
+ 	 file extensions. Added a for loop at the end to print the statement out rather
+	 than just have it return a vector.
 	 Link: https://stackoverflow.com/questions/11140483/how-to-get-list-of-files-with-a-specific-extension-in-a-given-folder
 */
-void display_directory_files(fs::path const & root, string const & ext)
-{
-    vector<fs::path> paths;
-    if (fs::exists(root) && fs::is_directory(root))
-    {
-        for (auto const & entry : fs::recursive_directory_iterator(root))
-        {
-            if (fs::is_regular_file(entry) && entry.path().extension() == ext)
-                paths.emplace_back(entry.path().filename());
-        }
-    }
-		cout << "These are all your text files in your current folder:\n";
-  	for (auto i = 0; i < paths.size(); i++) {
-			cout << paths[i] << endl;
-		}
+void display_directory_files(fs::path const & root, string const & ext) {
+	// Uses certain boost functions to locate textfiles with certain extensions
+  vector<fs::path> fileVector;
+  if (fs::exists(root) && fs::is_directory(root))
+  {
+      for (auto const & entry : fs::recursive_directory_iterator(root))
+      {
+          if (fs::is_regular_file(entry) && entry.path().extension() == ext)
+              fileVector.emplace_back(entry.path().filename());
+      }
+  }
+
+	// Prints out the vector that has been populated from above.
+	cout << "\nThese are all your text files in your current folder:\n";
+	for (auto i = 0; i < fileVector.size(); i++) {
+		cout << fileVector[i] << endl;
+	}
 }
 
 int main() {
@@ -229,6 +232,7 @@ int main() {
 			intro();
 			cout << "Your current file that you are working with is: " << fileName;
 			cout << "\n";
+			cout << "\nPlease enter the number of your choice.\n";
 			getline(cin, choice_num);
 			std::stringstream convert(choice_num);
 			if (convert >> actual_num && !(convert >> choice_num)) {
