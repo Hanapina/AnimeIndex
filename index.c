@@ -2,17 +2,20 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <boost/filesystem.hpp>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <cstring>
 using namespace std;
+namespace fs = boost::filesystem
 
 /* Just a function that prints out some intro statements */
 void intro(){
 	cout << "Welcome to The Weeb Index.\n";
 	cout << "What do you want to do today? \n";
-	cout << "1. Add an entry.\n2. Display current file list.\n3. Delete Entry.\n4. Change fileName.\n5. Exit\n";
+	cout << "1. Add an entry.\n2. Display current file list.\n3. Display files in current directory.";
+	cout << "\n4. Delete Entry.\n5. Change fileName.\n6. Exit\n";
 }
 
 /* Function used to organize list of anime.
@@ -190,10 +193,28 @@ string change_entry(string fileName) {
 	return userInput + ".txt";
 }
 
+/* Function taken from stack overflow using the boost library to find certain
+ 	 file extensions.
+	 Link: https://stackoverflow.com/questions/11140483/how-to-get-list-of-files-with-a-specific-extension-in-a-given-folder
+*/
+vector<fs::path> display_directory_files(fs::path const & root, string const & ext)
+{
+    vector<fs::path> paths;
+    if (fs::exists(root) && fs::is_directory(root))
+    {
+        for (auto const & entry : fs::recursive_directory_iterator(root))
+        {
+            if (fs::is_regular_file(entry) && entry.path().extension() == ext)
+                paths.emplace_back(entry.path().filename());
+        }
+    }
+    return paths;
+}
 
 int main() {
 	// Switch statements for inputs.
 	bool token = true;
+	auto cwdPath = fs::current_path();
 	string fileName = "anime_index.txt";
 	while (token) {
 		string choice_num;
@@ -228,12 +249,14 @@ int main() {
 				display_list(fileName);
 				break;
 			case 3:
+				display_directory_files(cwdPath, ".txt");
+			case 4:
 				delete_entry(fileName);
 				break;
-			case 4:
+			case 5:
 				fileName = change_entry(fileName);
 				break;
-			case 5:
+			case 6:
 				token = false;
 				cout << "Exiting.\n";
 				break;
