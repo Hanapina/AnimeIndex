@@ -253,6 +253,7 @@ int main() {
 				break;
 			case 3:
 				display_directory_files(cwdPath, ".txt");
+				break;
 			case 4:
 				delete_entry(fileName);
 				break;
