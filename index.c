@@ -39,7 +39,6 @@ void organize_list(string fileName) {
 		writeFile << nameVector[i];
 		writeFile << '\n';
 	}
-	writeFile.close();
 }
 
 /* Function that deals with adding to the list.
@@ -54,8 +53,6 @@ void add_list(string fileName) {
 	if (!fileCheck) {
 		ofstream fileOpen(fileName);
 		cout << "No index detected. Currently making index.\n";
-		fileCheck.close();
-		fileOpen.close();
 	}
 
 	// Asking for input
@@ -81,9 +78,7 @@ void add_list(string fileName) {
 	myFile << '\n';
 	cout << "Entry Added.\n";
 
-	// Closes Files and then organizes.
-	myFile.close();
-	checkFile.close();
+	// Organization
 	organize_list(fileName);
 }
 
@@ -99,8 +94,6 @@ void display_list(string fileName) {
 		ofstream fileOpen(fileName);
 		cout << "No index detected. A file will be made for you.\n";
 		cout << "Because this is a blank file, I will be returning you to the menu.\n";
-		fileCheck.close();
-		fileOpen.close();
 		return;
 	}
 
@@ -111,7 +104,6 @@ void display_list(string fileName) {
 		while (getline(myFile, name)) {
 			cout << name << endl;
 		}
-		myFile.close();
 	}
 }
 
@@ -130,7 +122,6 @@ void delete_entry(string fileName) {
 		nameVector.push_back(name);
 	}
 	sort(nameVector.begin(), nameVector.end());
-	myFile.close();
 
 	// While loops that handles inputs + vector + writing of file. Uses Bool to hold
 	while (!token) {
