@@ -33,4 +33,5 @@ There is a default text file created for you that also displays what format your
 
 ## Disclaimer
 You may use this however you want to but it would be great if you could credit me if you decide to fork this and use modify it. 
-The whole project is zipped in a file and you can import it via netbeans if you feel like it. However, the original folder listed only contains the jar file. 
+
+The whole project is zipped in a file and you can import it via netbeans if you feel like it.
