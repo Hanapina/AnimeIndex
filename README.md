@@ -15,7 +15,7 @@ Unzip the rar and launch the bat file included within.
 
 There is a default text file created for you that also displays what format your items should be in if you want to explicitly import your own text file into it. 
 
-**Small note: the program is defaulted to create a ".txt" called "anime_index.txt, if it does not exist."**
+**Small note: the program is defaulted to create a ".txt" called "anime_index.txt, if it does not exist.**
 
 **IN TERMS OF FORMAT IN THE TEXT, IT NEEDS TO BE IN THE FOLLOWING: NAME, SEASON, YEAR**
 
