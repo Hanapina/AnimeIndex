@@ -19,7 +19,7 @@ There is a default text file created for you that also displays what format your
 
 **IN TERMS OF FORMAT IN THE TEXT, IT NEEDS TO BE IN THE FOLLOWING: NAME, SEASON, YEAR**
 
-**The name of the file must also be "anime_index.txt"
+**The name of the file must also be "anime_index.txt"**
 
 ## Functions
 
