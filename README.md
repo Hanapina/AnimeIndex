@@ -9,7 +9,7 @@ If you want to create a build of the project yourself, you need to have followin
 * **Program was exported via NetBeans.**
 
 ## Installation 
-There will be a folder named "Anime_index_Java." 
+Simple download the rar named "Anime_index_Java.rar"
 There is a default text file created for you that also displays what format your items should be in if you want to explicitly import your own text file into it. 
 **Small note: the program is defaulted to create a ".txt" called "anime_index.txt, if it does not exist."**
 
