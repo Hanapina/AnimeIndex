@@ -9,8 +9,10 @@ If you want to create a build of the project yourself, you need to have followin
 * **Program was exported via NetBeans.**
 
 ## Installation 
-Simple download the rar named "Anime_index_Java.rar"
+Simply download the rar named "Anime_index_Java.rar."
+
 Unzip the rar and launch the bat file included within. 
+
 There is a default text file created for you that also displays what format your items should be in if you want to explicitly import your own text file into it. 
 **Small note: the program is defaulted to create a ".txt" called "anime_index.txt, if it does not exist."**
 
