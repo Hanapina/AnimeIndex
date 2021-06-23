@@ -5,14 +5,15 @@ Next step is to implement a working GUI for this.
 
 If you want to create a build of the project yourself, you need to have following installed: 
 
-* **Boost library (https://www.boost.org/)**
-* **C++17 and above.**
+* **JAVA SDK/SE8**
+* **Program was exported via NetBeans.**
 
 ## Installation 
-Just put in a directory where you want the program to start creating your list. 
-**Small note: the program is defaulted to create a ".txt" called "anime_index.txt."**
+There will be a folder named "Anime_index_Java." 
+There is a default text file created for you that also displays what format your items should be in if you want to explicitly import your own text file into it. 
+**Small note: the program is defaulted to create a ".txt" called "anime_index.txt, if it does not exist."**
 
-**If you do not want it named that, please change it via using the change entry option in the program before you use any of the other functions.**  
+**IN TERMS OF FORMAT IN THE TEXT, IT NEEDS TO BE IN THE FOLLOWING: NAME, SEASON, YEAR**
 
 ## Functions
 
@@ -20,13 +21,12 @@ Just put in a directory where you want the program to start creating your list.
 
 2) Displaying the current text file.
 
-3) Displaying your text files that you have in your current directory. 
+3) Soring your text file by either name, season, or year.
 
-4) Deleting an entry from your text file. **(This has to be matching case by case or an error will pop out, will think of a way to generate a less case sensitive matching later.)** 
+4) IN THE WORKS: Deleting an entry from your text file. **(This has to be matching case by case or an error will pop out, will think of a way to generate a less case sensitive matching later.)** 
 
-5) Change the text file that you are currently working with.
-
-6) Exit the program. 
+5) Exit the program. 
 
 ## Disclaimer
 You may use this however you want to but it would be great if you could credit me if you decide to fork this and use modify it. 
+The whole project is zipped in a file and you can import it via netbeans if you feel like it. However, the original folder listed only contains the jar file. 
