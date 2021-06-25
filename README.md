@@ -29,7 +29,7 @@ There is a default text file created for you that also displays what format your
 
 3) Soring your text file by either name, season, or year.
 
-4) IN THE WORKS: Deleting an entry from your text file. **(This has to be matching case by case or an error will pop out, will think of a way to generate a less case sensitive matching later.)** 
+4) Deleting an entry from your text file. **(This has to be matching case by case or an error will pop out, will think of a way to generate a less case sensitive matching later.)** 
 
 5) Exit the program. 
 
