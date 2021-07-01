@@ -31,7 +31,11 @@ There is a default text file created for you that also displays what format your
 
 4) Deleting an entry from your text file. **(This has to be matching case by case or an error will pop out, will think of a way to generate a less case sensitive matching later.)** 
 
-5) Exit the program. 
+5) Changing the file you are working with. 
+
+6) Editing an entry.
+
+7) Exit the program. 
 
 ## Disclaimer
 You may use this however you want to but it would be great if you could credit me if you decide to fork this and use modify it. 
